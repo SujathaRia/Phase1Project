@@ -33,13 +33,7 @@ public class AmazonTest {
 		WebElement searchButton = driver.findElement(By.xpath("//input[@id='nav-search-submit-button']"));
 		searchButton.click();
 
-		TakesScreenshot tsObj = (TakesScreenshot) driver;
-		File fileObj = tsObj.getScreenshotAs(OutputType.FILE);
-
-		File screenshotObj = new File("image.png");
-
-		FileUtils.copyFile(fileObj, screenshotObj);
-
+		
 		List<WebElement> productName = driver.findElements(By.xpath("//div[@class='a-section']//h2//span"));
 
 		List<WebElement> productPrice = driver
@@ -53,6 +47,13 @@ public class AmazonTest {
 
 			System.out.println("Product price: " + productPrice.get(i).getText()+ " " + currency.get(i).getText() );
 		}
+		
+		TakesScreenshot tsObj = (TakesScreenshot) driver;
+		File fileObj = tsObj.getScreenshotAs(OutputType.FILE);
+
+		File screenshotObj = new File("image.png");
+
+		FileUtils.copyFile(fileObj, screenshotObj);
 		
 		driver.close();
 	}
